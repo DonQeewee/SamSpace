@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">SamSpace_College</string>
+
+    <string name="complaints_manager">COMPLAINTS MANAGER</string>
+    <string name="user_registration">USER REGISTRATION</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="existing_user_sign_in">Existing user? Sign in</string>
+    <string name="login">LOGIN</string>
+    <string name="password">Password</string>
+    <string name="preferred_username">Preferred Username</string>
+    <string name="email">Email</string>
+    <string name="customer_complaint_manager">CUSTOMER COMPLAINT MANAGER</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome">WELCOME</string>
+    <string name="login_into_your_profile">Login into your profile</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="first_time_user">First time user?</string>
+    <string name="trouble_logging_in">TROUBLE LOGGING IN?</string>
+    <string name="click_here">CLICK HERE</string>
+    <string name="already_have_an_account_sign_in">Already have an account? Sign In</string>
+    <string name="welcome_user">WELCOME, USER</string>
+</resources>

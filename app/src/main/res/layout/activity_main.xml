@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bluebg1"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="170dp"
+        android:fontFamily="@font/rye"
+        android:text="WELCOME"
+        android:textAlignment="center"
+        android:textColor="@color/red"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/welcome2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/rye"
+        android:text="Login into your profile"
+        android:layout_alignTop="@+id/welcome"
+        android:textAlignment="center"
+        android:textColor="@color/red"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/welcome2"
+        android:layout_marginHorizontal="60dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/curvature2"
+        android:fontFamily="sans-serif-thin"
+        android:hint="Email"
+        android:drawableRight="@drawable/baseline_email_24"
+        android:paddingHorizontal="10dp"
+        android:textColorHint="@color/blue" />
+
+    <EditText
+        android:id="@+id/pword"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/email"
+        android:layout_marginHorizontal="60dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/curvature2"
+        android:fontFamily="sans-serif-thin"
+        android:hint="Password"
+        android:inputType="text"
+        android:password="true"
+        android:paddingHorizontal="10dp"
+        android:textColorHint="@color/blue" />
+
+    <Button
+        android:id="@+id/signon"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="120dp"
+        android:text="LOGIN"
+        android:fontFamily="@font/aladin"
+        android:textSize="19sp"
+        android:layout_alignTop="@+id/pword"
+        android:layout_marginTop="65dp"/>
+
+    <TextView
+        android:id="@+id/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Not yet a registered user?"
+        android:fontFamily="@font/aladin"
+        android:textColor="@color/red"
+        android:textSize="18sp"
+        android:layout_alignTop="@+id/signon"
+        android:layout_marginTop="50dp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/register2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Click here to sign up"
+        android:fontFamily="@font/aladin"
+        android:textColor="@color/red"
+        android:textSize="18sp"
+        android:layout_alignTop="@+id/register"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:onClick="signup"/>
+
+    <TextView
+        android:id="@+id/procid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="thanks"
+        android:fontFamily="@font/aladin"
+        android:textColor="@color/red"
+        android:textSize="18sp"
+        android:layout_alignTop="@+id/register2"
+        android:layout_marginTop="50dp"
+        android:visibility="gone"
+        android:textAlignment="center"/>
+
+
+
+
+
+
+
+
+
+    </RelativeLayout>
