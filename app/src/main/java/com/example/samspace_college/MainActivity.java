@@ -28,7 +28,7 @@ import Validators.PwordValidator;
 
 public class MainActivity extends AppCompatActivity {
 
-    String loginURL = "https://ayomideandroidtrainingapi-production.up.railway.app/api/v1/admin/login";
+    String loginURL = "https://app-7c3cd652-938a-4fc2-b694-24b8228e1f06.cleverapps.io/api/v1/admin/login";
     ActivityMainBinding binding;
     
     SharedPreferences sharedPreferences;
@@ -39,16 +39,19 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         super.onCreate(savedInstanceState);
         setContentView(binding.getRoot());
+        sharedPreferences = getSharedPreferences("mine", MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        String token = sharedPreferences.getString("token", null);
+        if(token!=null){
+            startActivity(new Intent(getApplicationContext(), Dashboard.class));
+        }
 
         binding.signon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = binding.email.getText().toString().trim();
                 String pword = binding.pword.getText().toString().trim();
-
-                sharedPreferences = getSharedPreferences("mine", MODE_PRIVATE);
-                editor = sharedPreferences.edit();
-
 
                 if(email.isEmpty()||pword.isEmpty()){
                     binding.procid.setText("All fields are required");

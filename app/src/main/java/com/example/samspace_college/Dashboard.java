@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class Dashboard extends AppCompatActivity {
 
-    String userDetailsURL = "https://ayomideandroidtrainingapi-production.up.railway.app/api/v1/admin/userdetails";
+    String userDetailsURL = "https://app-7c3cd652-938a-4fc2-b694-24b8228e1f06.cleverapps.io/api/v1/admin/userdetails";
 
     ActivityDashboardBinding binding;
     SharedPreferences sharedPreferences;
@@ -44,8 +44,6 @@ public class Dashboard extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("mine", MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
-        token = sharedPreferences.getString("token", null);
-
         getUserDetails();
 
     }
@@ -57,14 +55,16 @@ public class Dashboard extends AppCompatActivity {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, userDetailsURL, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonObject) {
-                String fname;
-
+                String fname, lname, email, pword;
                 try {
                     fname = jsonObject.getString("firstName");
+                    lname = jsonObject.getString("lastName");
+                    email = jsonObject.getString("email");
+                    pword = jsonObject.getString("password");
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }
-                binding.welcome.setText("Welcome, " + fname);
+                binding.welcome.setText("Welcome, " + fname + lname);
 
             }
         }, new Response.ErrorListener() {
@@ -88,5 +88,9 @@ public class Dashboard extends AppCompatActivity {
         editor.clear();
         editor.commit();
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
+    }
+
+    public void course(View view) {
+        startActivity(new Intent(getApplicationContext(), Courses.class));
     }
 }

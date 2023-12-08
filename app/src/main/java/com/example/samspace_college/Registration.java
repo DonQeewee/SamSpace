@@ -2,6 +2,7 @@ package com.example.samspace_college;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
@@ -26,14 +27,21 @@ import Validators.PwordValidator;
 
 public class Registration extends AppCompatActivity {
 
-    String regURL = "https://ayomideandroidtrainingapi-production.up.railway.app/api/v1/admin";
+    String regURL = "https://app-7c3cd652-938a-4fc2-b694-24b8228e1f06.cleverapps.io/api/v1/admin";
     ActivityRegistrationBinding binding;
+
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityRegistrationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        sharedPreferences = getSharedPreferences("mine", MODE_PRIVATE);
+
+        String lname = sharedPreferences.getString("lname", null);
+
 
         binding.signup.setOnClickListener(new View.OnClickListener() {
             @Override
