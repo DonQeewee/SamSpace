@@ -2,6 +2,7 @@ package com.example.samspace_college;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,9 +22,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Courses extends AppCompatActivity {
     ActivityCoursesBinding binding;
     String courseURL = "https://app-7c3cd652-938a-4fc2-b694-24b8228e1f06.cleverapps.io/api/v1/course";
+    List<String> courses = new ArrayList<>();
 
 
     @Override
@@ -34,7 +39,8 @@ public class Courses extends AppCompatActivity {
 
         getCourses();
 
-
+        ArrayAdapter<String> allCourses = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, courses);
+        binding.courseList.setAdapter(allCourses);
     }
 
     public void getCourses() {
@@ -49,19 +55,18 @@ public class Courses extends AppCompatActivity {
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject item = jsonArray.getJSONObject(i);
                         courseName = item.getString("courseName");
-                        System.out.println("These are the available courses: " + courseName);
+                        courses.add(courseName);
                     }
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }
             }
-        },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError volleyError) {
-                        Log.e("myError", volleyError.toString());
-                    }
-                });
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.e("myError", volleyError.toString());
+            }
+        });
         q.add(jsonArrayRequest);
 
     }
