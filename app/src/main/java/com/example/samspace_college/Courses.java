@@ -37,10 +37,10 @@ public class Courses extends AppCompatActivity {
         binding = ActivityCoursesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        ArrayAdapter<String> allCourses = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, courses);
+
         getCourses();
 
-        ArrayAdapter<String> allCourses = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, courses);
-        binding.courseList.setAdapter(allCourses);
     }
 
     public void getCourses() {
@@ -51,15 +51,19 @@ public class Courses extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray jsonArray) {
                 String courseName;
+
                 try {
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject item = jsonArray.getJSONObject(i);
                         courseName = item.getString("courseName");
-                        courses.add(courseName);
+                        courses.add(courseName)
+                        ArrayAdapter<String> allCourses = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, courses);
+                        binding.courseList.setAdapter(allCourses);
                     }
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }
+
             }
         }, new Response.ErrorListener() {
             @Override
