@@ -27,7 +27,7 @@ import java.util.List;
 
 public class Courses extends AppCompatActivity {
     ActivityCoursesBinding binding;
-    String courseURL = "https://app-7c3cd652-938a-4fc2-b694-24b8228e1f06.cleverapps.io/api/v1/course";
+    final String courseURL = "https://app-7c3cd652-938a-4fc2-b694-24b8228e1f06.cleverapps.io/api/v1/course";
     List<String> courses = new ArrayList<>();
 
 
@@ -36,8 +36,6 @@ public class Courses extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityCoursesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        ArrayAdapter<String> allCourses = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, courses);
 
         getCourses();
 
@@ -56,10 +54,13 @@ public class Courses extends AppCompatActivity {
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject item = jsonArray.getJSONObject(i);
                         courseName = item.getString("courseName");
-                        courses.add(courseName)
-                        ArrayAdapter<String> allCourses = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, courses);
-                        binding.courseList.setAdapter(allCourses);
+                        courses.add(courseName);
                     }
+                    ArrayAdapter<String> allCourses = new ArrayAdapter<>(getApplicationContext(),
+                            android.R.layout.simple_list_item_1,
+                            courses
+                    );
+                    binding.courseList.setAdapter(allCourses);
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }
