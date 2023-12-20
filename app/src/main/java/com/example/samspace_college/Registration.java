@@ -1,16 +1,11 @@
 package com.example.samspace_college;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -70,10 +65,12 @@ public class Registration extends AppCompatActivity {
         if(!EmailValidator.isEmailValid(email)){
             binding.thanks.setText("Invalid email");
             binding.thanks.setVisibility(View.VISIBLE);
+            return;
         }
         if(!PwordValidator.isPwordValid(pword)){
             binding.thanks.setText("Invalid password. Please check the requirements.");
             binding.thanks.setVisibility(View.VISIBLE);
+            return;
         }
         RequestQueue queue = Volley.newRequestQueue(this);
 

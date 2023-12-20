@@ -1,8 +1,12 @@
 package com.example.samspace_college;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,6 +41,13 @@ public class Courses extends AppCompatActivity {
         binding = ActivityCoursesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        binding.courseList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(this, "This is " + courses.get(i) + "course", Toast.LENGTH_SHORT);
+            }
+        });
+
         getCourses();
 
     }
@@ -61,6 +72,7 @@ public class Courses extends AppCompatActivity {
                             courses
                     );
                     binding.courseList.setAdapter(allCourses);
+
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }
