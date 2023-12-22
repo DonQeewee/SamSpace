@@ -57,6 +57,8 @@ public class Dashboard extends AppCompatActivity {
                     lname = jsonObject.getString("lastName");
                     email = jsonObject.getString("email");
                     pword = jsonObject.getString("password");
+                    editor.putString("email", email);
+                    editor.commit();
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }

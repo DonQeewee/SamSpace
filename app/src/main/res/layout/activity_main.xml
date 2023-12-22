@@ -39,11 +39,13 @@
         android:layout_marginHorizontal="60dp"
         android:layout_marginTop="60dp"
         android:background="@drawable/curvature2"
-        android:fontFamily="sans-serif-thin"
-        android:hint="Email"
         android:drawableRight="@drawable/baseline_email_24"
+        android:fontFamily="@font/aladin"
+        android:textSize="22sp"
+        android:hint="Email"
         android:paddingHorizontal="10dp"
-        android:textColorHint="@color/blue" />
+        android:textColorHint="@color/blue"
+        android:textColor="@color/blue" />
 
     <EditText
         android:id="@+id/pword"
@@ -53,12 +55,14 @@
         android:layout_marginHorizontal="60dp"
         android:layout_marginTop="60dp"
         android:background="@drawable/curvature2"
-        android:fontFamily="sans-serif-thin"
+        android:fontFamily="@font/aladin"
+        android:textSize="22sp"
         android:hint="Password"
         android:inputType="text"
         android:password="true"
         android:paddingHorizontal="10dp"
-        android:textColorHint="@color/blue" />
+        android:textColorHint="@color/blue"
+        android:textColor="@color/blue" />
 
     <Button
         android:id="@+id/signon"

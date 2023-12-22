@@ -41,14 +41,14 @@ public class Courses extends AppCompatActivity {
         binding = ActivityCoursesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        getCourses();
+
         binding.courseList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(this, "This is " + courses.get(i) + "course", Toast.LENGTH_SHORT);
+                Toast.makeText(Courses.this, "This is " + courses.get(position) + " course", Toast.LENGTH_SHORT).show();
             }
         });
-
-        getCourses();
 
     }
 

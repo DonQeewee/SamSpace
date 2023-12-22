@@ -37,10 +37,7 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("mine", MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
-        String token = sharedPreferences.getString("token", null);
-        if(token!=null){
-            startActivity(new Intent(getApplicationContext(), Dashboard.class));
-        }
+
 
 
         binding.signon.setOnClickListener(new View.OnClickListener() {

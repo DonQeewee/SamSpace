@@ -20,4 +20,8 @@
     <string name="click_here">CLICK HERE</string>
     <string name="already_have_an_account_sign_in">Already have an account? Sign In</string>
     <string name="welcome_user">WELCOME, USER</string>
+    <string name="admins">Admins</string>
+    <string name="courses">Courses</string>
+    <string name="teachers">Teachers</string>
+    <string name="students">Students</string>
 </resources>
