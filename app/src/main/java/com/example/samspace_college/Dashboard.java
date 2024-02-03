@@ -3,11 +3,13 @@ package com.example.samspace_college;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -19,6 +21,7 @@ import com.example.samspace_college.databinding.ActivityDashboardBinding;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,6 +43,8 @@ public class Dashboard extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("mine", MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
+        token = sharedPreferences.getString("token", null);
+
         getUserDetails();
 
     }
@@ -56,9 +61,9 @@ public class Dashboard extends AppCompatActivity {
                     fname = jsonObject.getString("firstName");
                     lname = jsonObject.getString("lastName");
                     email = jsonObject.getString("email");
-                    pword = jsonObject.getString("password");
                     editor.putString("email", email);
                     editor.commit();
+                    System.out.println(email);
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }
@@ -68,7 +73,12 @@ public class Dashboard extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
+                NetworkResponse response = volleyError.networkResponse;
+                if(response != null && response.data != null){
 
+                    String errorResponse = new String(response.data, StandardCharsets.UTF_8);
+                    Log.e("VolleyError", errorResponse);
+                }
             }
         }) {
             @Override

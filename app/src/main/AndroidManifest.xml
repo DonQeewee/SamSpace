@@ -15,6 +15,9 @@
         android:theme="@style/Theme.SamSpace_College"
         tools:targetApi="31">
         <activity
+            android:name=".Students"
+            android:exported="false" />
+        <activity
             android:name=".Courses"
             android:exported="false" />
         <activity
