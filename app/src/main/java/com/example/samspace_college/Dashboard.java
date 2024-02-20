@@ -110,4 +110,12 @@ public class Dashboard extends AppCompatActivity {
     public void student(View view) {
         startActivity(new Intent(getApplicationContext(), Students.class));
     }
+
+    public void admin(View view) {
+        startActivity(new Intent(getApplicationContext(), Students.class));
+    }
+
+    public void teacher(View view) {
+        startActivity(new Intent(getApplicationContext(), Students.class));
+    }
 }

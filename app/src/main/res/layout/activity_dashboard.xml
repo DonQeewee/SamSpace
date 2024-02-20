@@ -72,7 +72,9 @@
             android:layout_column="1"
             android:layout_gravity="center"
             app:cardElevation="12dp"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            android:onClick="teacher"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -144,8 +146,8 @@
             android:layout_row="1"
             android:layout_column="1"
             android:layout_gravity="center"
-
-            app:cardElevation="12dp">
+            app:cardElevation="12dp"
+            android:onClick="admin">
 
             <LinearLayout
                 android:layout_width="match_parent"
