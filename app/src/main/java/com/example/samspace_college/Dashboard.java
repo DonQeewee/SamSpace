@@ -27,7 +27,7 @@ import java.util.Map;
 
 public class Dashboard extends AppCompatActivity {
 
-    String userDetailsURL = "https://app-7c3cd652-938a-4fc2-b694-24b8228e1f06.cleverapps.io/api/v1/admin/userdetails";
+    String userDetailsURL = "https://ayomide-api.cleverapps.io/api/v1/admin/userdetails";
 
     ActivityDashboardBinding binding;
     SharedPreferences sharedPreferences;
@@ -78,6 +78,10 @@ public class Dashboard extends AppCompatActivity {
 
                     String errorResponse = new String(response.data, StandardCharsets.UTF_8);
                     Log.e("VolleyError", errorResponse);
+
+                    editor.clear();
+                    editor.commit();
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 }
             }
         }) {
@@ -86,6 +90,7 @@ public class Dashboard extends AppCompatActivity {
                 Map<String, String> details = new HashMap<>();
                 details.put("Authorization", "Bearer " + token);
                 return details;
+
             }
         };
         q.add(jsonObjectRequest);
@@ -100,5 +105,9 @@ public class Dashboard extends AppCompatActivity {
 
     public void course(View view) {
         startActivity(new Intent(getApplicationContext(), Courses.class));
+    }
+
+    public void student(View view) {
+        startActivity(new Intent(getApplicationContext(), Students.class));
     }
 }

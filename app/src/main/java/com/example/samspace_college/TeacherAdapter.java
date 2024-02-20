@@ -9,12 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
+public class TeacherAdapter extends RecyclerView.Adapter<MyViewHolder>{
 
     Context context;
     List<sd> sd;
 
-    public MyAdapter(Context context, List<com.example.samspace_college.sd> sd) {
+    public TeacherAdapter(Context context, List<com.example.samspace_college.sd> sd) {
         this.context = context;
         this.sd = sd;
     }
@@ -30,6 +30,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
         holder.name.setText(sd.get(position).getName());
         holder.email.setText(sd.get(position).getEmail());
         holder.grade.setText(sd.get(position).getGrade());
+
     }
 
     @Override

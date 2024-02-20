@@ -9,31 +9,32 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
+public class AdminAdapter extends RecyclerView.Adapter<MyViewHolder>{
 
     Context context;
-    List<sd> sd;
+    List<Admin> admin;
 
-    public MyAdapter(Context context, List<com.example.samspace_college.sd> sd) {
+    public AdminAdapter(Context context, List<Admin> admin) {
         this.context = context;
-        this.sd = sd;
+        this.admin = admin;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.sd_view, parent, false));
+        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.admin_view, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.name.setText(sd.get(position).getName());
-        holder.email.setText(sd.get(position).getEmail());
-        holder.grade.setText(sd.get(position).getGrade());
+        holder.name.setText(admin.get(position).getName());
+        holder.email.setText(admin.get(position).getEmail());
+        holder.role.setText(admin.get(position).getRole());
+
     }
 
     @Override
     public int getItemCount() {
-        return sd.size();
+        return admin.size();
     }
 }

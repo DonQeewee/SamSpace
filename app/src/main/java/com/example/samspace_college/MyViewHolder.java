@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MyViewHolder extends RecyclerView.ViewHolder {
 
     ImageView pic;
-    TextView name, email, grade;
+    TextView name, email, grade, role;
 
     public MyViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -19,5 +19,6 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
         name = itemView.findViewById(R.id.name);
         email = itemView.findViewById(R.id.email);
         grade = itemView.findViewById(R.id.grade);
+        role = itemView.findViewById(R.id.role);
     }
 }

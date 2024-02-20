@@ -23,7 +23,7 @@ import Validators.PwordValidator;
 
 public class MainActivity extends AppCompatActivity {
 
-    String loginURL = "https://app-7c3cd652-938a-4fc2-b694-24b8228e1f06.cleverapps.io/api/v1/admin/login";
+    String loginURL = "https://ayomide-api.cleverapps.io/api/v1/admin/login";
     ActivityMainBinding binding;
     
     SharedPreferences sharedPreferences;

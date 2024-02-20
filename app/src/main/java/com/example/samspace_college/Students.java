@@ -29,10 +29,16 @@ import java.util.List;
 
 public class Students extends AppCompatActivity {
 
-    final String studentsURL = "https://app-7c3cd652-938a-4fc2-b694-24b8228e1f06.cleverapps.io/api/v1/student";
+    final String studentsURL = "https://ayomide-api.cleverapps.io/api/v1/student";
+    final String teachersURL = "https://ayomide-api.cleverapps.io/api/v1/teacher";
+    final String adminURL = "https://ayomide-api.cleverapps.io/api/v1/admin";
 
     ActivityStudentsBinding binding;
     List<String> students = new ArrayList<>();
+
+    List<sd> sd = new ArrayList<>();
+    List<Admin> admin = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +46,13 @@ public class Students extends AppCompatActivity {
         binding = ActivityStudentsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.students.setLayoutManager(new LinearLayoutManager(this));
-        binding.students.setAdapter(new MyAdapter(getApplicationContext(), ));
+        getStudents();
+        getTeachers();
+        getAdmins();
 
-        };
+    }
+
+    ;
 
     public void getStudents() {
 
@@ -52,21 +61,22 @@ public class Students extends AppCompatActivity {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, studentsURL, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray jsonArray) {
-                String name, email, grade;
+                String fname, lname, email, grade, name;
 
                 try {
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject item = jsonArray.getJSONObject(i);
-                        name = item.getString("firstName" + "lastname");
+                        fname = item.getString("firstName");
+                        lname = item.getString("lastName");
                         email = item.getString("email");
                         grade = item.getString("level");
-                        students.add(name);
+                        name = fname + " " + lname;
+
+                        sd.add(new sd(name, email, grade));
+
                     }
-                    ArrayAdapter<String> allCourses = new ArrayAdapter<>(getApplicationContext(),
-                            android.R.layout.simple_list_item_1,
-                            courses
-                    );
-                    binding.courseList.setAdapter(allCourses);
+                    binding.students.setAdapter(new MyAdapter(getApplicationContext(), sd));
+
 
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
@@ -82,4 +92,81 @@ public class Students extends AppCompatActivity {
         q.add(jsonArrayRequest);
 
 
+    }
+
+    public void getTeachers() {
+
+        RequestQueue q = Volley.newRequestQueue(this);
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, teachersURL, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray jsonArray) {
+                String fname, lname, email, grade, name;
+
+                try {
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject item = jsonArray.getJSONObject(i);
+                        fname = item.getString("firstName");
+                        lname = item.getString("lastName");
+                        email = item.getString("email");
+                        grade = item.getString("level");
+                        name = fname + " " + lname;
+
+                        sd.add(new sd(name, email, grade));
+
+                    }
+                    binding.teachers.setAdapter(new MyAdapter(getApplicationContext(), sd));
+
+
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.e("myError", volleyError.toString());
+            }
+        });
+        q.add(jsonArrayRequest);
+    }
+
+    public void getAdmins() {
+
+        RequestQueue q = Volley.newRequestQueue(this);
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, adminURL, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray jsonArray) {
+                String fname, lname, role, email, name;
+
+                try {
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject item = jsonArray.getJSONObject(i);
+                        fname = item.getString("firstName");
+                        lname = item.getString("lastName");
+                        role = item.getString("role");
+                        email = item.getString("email");
+                        name = fname + " " + lname;
+
+                        admin.add(new Admin(name, email, role));
+
+                    }
+                    binding.admin.setAdapter(new AdminAdapter(getApplicationContext(), admin));
+
+
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.e("myError", volleyError.toString());
+            }
+        });
+        q.add(jsonArrayRequest);
+    }
 }

@@ -1,25 +1,14 @@
 package com.example.samspace_college;
 
-public class sd {
+public class Admin {
 
     String name;
     String email;
     String role;
-    String grade;
 
-
-    public sd(String name, String email, String grade) {
+    public Admin(String name, String email, String role) {
         this.name = name;
         this.email = email;
-        this.grade = grade;
-
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
         this.role = role;
     }
 
@@ -39,12 +28,11 @@ public class sd {
         this.email = email;
     }
 
-    public String getGrade() {
-        return grade;
+    public String getRole() {
+        return role;
     }
 
-    public void setGrade(String grade) {
-        this.grade = grade;
+    public void setRole(String role) {
+        this.role = role;
     }
-
 }
